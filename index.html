@@ -20,6 +20,7 @@
     <style>
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 120px;
         }
 
         body {
@@ -29,7 +30,7 @@
         }
 
 
-        /* Background Glow */
+        /* Glow */
 
         .blur1 {
             position: absolute;
@@ -65,14 +66,13 @@
         }
 
 
-        /* Glass Cards */
+        /* Cards */
 
         .card {
 
             background: rgba(255, 255, 255, .03);
             border: 1px solid rgba(255, 255, 255, .07);
             backdrop-filter: blur(20px);
-
             transition: .5s;
             overflow: hidden;
 
@@ -81,13 +81,10 @@
         .card:hover {
 
             transform: translateY(-10px);
-
             border-color: #4f46e5;
-
             box-shadow: 0 0 30px rgba(79, 70, 229, .4);
 
         }
-
 
         img {
 
@@ -97,7 +94,7 @@
         }
 
 
-        /* Mouse */
+        /* Mouse Cursor */
 
         .cursor {
 
@@ -111,12 +108,39 @@
             z-index: 9999;
 
         }
+
+        .floating {
+
+            animation: floatAnimation 4s ease-in-out infinite;
+
+        }
+
+        @keyframes floatAnimation {
+
+            0% {
+
+                transform: translateY(0px);
+
+            }
+
+            50% {
+
+                transform: translateY(-20px);
+
+            }
+
+            100% {
+
+                transform: translateY(0px);
+
+            }
+
+        }
     </style>
 
 </head>
 
 <body>
-
 
     <div class="cursor"></div>
 
@@ -132,16 +156,28 @@
 
             <h1 class="text-white text-2xl font-bold">
 
-                Sandhya.
+                Suraj Singh
 
             </h1>
 
+
             <div class="hidden md:flex gap-10 text-gray-300">
 
-                <a href="#home">Home</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#contact">Contact</a>
+                <a href="#home" class="hover:text-blue-400 duration-300">
+                    Home
+                </a>
+
+                <a href="#projects" class="hover:text-blue-400 duration-300">
+                    Projects
+                </a>
+
+                <a href="#skills" class="hover:text-blue-400 duration-300">
+                    Skills
+                </a>
+
+                <a href="#contact" class="hover:text-blue-400 duration-300">
+                    Contact
+                </a>
 
             </div>
 
@@ -149,165 +185,115 @@
 
     </nav>
 
-
     <!-- HERO -->
 
-    <section id="home" class="min-h-screen flex items-center px-6">
+<section id="home" class="min-h-screen pt-5 flex items-center px-8">
 
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
+        <!-- Left Content -->
 
-            <div>
+        <div>
 
-                <p class="smallText text-blue-400 mb-5 tracking-[5px]">
+            <p class="smallText text-blue-400 mb-5 pt-10 tracking-[5px] font-semibold">
 
-                    VIDEO EDITOR
+                VIDEO EDITOR • CONTENT CREATOR
 
-                </p>
-
-                <h1 class="heroText text-white text-5xl lg:text-7xl font-bold leading-tight">
-
-                    Creating
-                    Amazing
-
-                    <span class="text-blue-500">
-
-                        Visual Stories
-
-                    </span>
-
-                </h1>
+            </p>
 
 
-                <p class="subText text-gray-400 text-lg mt-8">
+            <h1 class="heroText text-white text-5xl lg:text-7xl font-bold leading-tight">
 
-                    Professional editing for YouTube, Reels,
-                    Commercial Ads and Social Media Content.
+                Turning Ideas Into
 
-                </p>
+                <span class="text-blue-500">
 
+                    Cinematic Stories
 
-                <div class="mt-10 flex gap-5">
-
-                    <button class="bg-blue-600 text-white px-8 py-4 rounded-full hover:scale-110 duration-300">
-
-                        Hire Me
-
-                    </button>
-
-
-                    <button
-                        class="border border-gray-700 px-8 py-4 rounded-full text-white hover:bg-white hover:text-black duration-300">
-
-                        View Work
-
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <div class="heroImage">
-
-                <div class="relative">
-
-                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44?w=1000"
-                        class="rounded-[30px]">
-
-
-                    <div class="absolute bottom-[-20px] right-[-20px] card rounded-3xl p-5">
-
-                        <h2 class="text-white text-3xl font-bold">
-
-                            150+
-
-                        </h2>
-
-                        <p class="text-gray-400">
-
-                            Projects Completed
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- SKILLS -->
-
-    <section id="skills" class="py-28 px-6">
-
-        <div class="max-w-7xl mx-auto">
-
-            <h1 class="title text-white text-5xl font-bold text-center mb-20">
-
-                Tools I Use
+                </span>
 
             </h1>
 
 
-            <div class="grid md:grid-cols-4 gap-8">
+            <p class="subText text-gray-400 text-lg mt-8 leading-8 max-w-xl">
+
+                Hi, I'm Suraj Singh, a passionate Video Editor and Content Creator
+                specializing in YouTube videos, reels, short-form content, and
+                commercial edits. I focus on transforming raw footage into engaging
+                visual stories through smooth transitions, cinematic effects, and
+                creative storytelling techniques that capture audience attention
+                and create impactful visual experiences.
+
+            </p>
 
 
-                <div class="card p-10 rounded-3xl text-center">
 
-                    <i class="ri-film-line text-5xl text-blue-500"></i>
+            <div class="mt-10 flex gap-5">
 
-                    <h3 class="text-white mt-6 text-xl">
+                <a href="#contact"
+                    class="bg-blue-600 text-white px-8 py-4 rounded-full hover:scale-110 duration-300">
 
-                        Premiere Pro
+                    Hire Me
 
-                    </h3>
+                </a>
+
+
+                <a href="#projects"
+                    class="border border-gray-700 px-8 py-4 rounded-full text-white hover:bg-white hover:text-black duration-300">
+
+                    View Work
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Right Image -->
+
+        <div class="heroImage">
+
+            <div class="relative floating">
+
+                <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44?w=1000"
+                    class="rounded-[30px] shadow-2xl">
+
+
+                <!-- Projects Card -->
+
+                <div class="absolute -bottom-8 -right-8 card rounded-3xl p-6">
+
+                    <h2 class="text-white text-3xl font-bold">
+
+                        20+
+
+                    </h2>
+
+                    <p class="text-gray-400">
+
+                        Projects Completed
+
+                    </p>
 
                 </div>
 
 
+                <!-- Views Card -->
 
-                <div class="card p-10 rounded-3xl text-center">
+                <div class="absolute -top-8 -left-8 card rounded-3xl p-6">
 
-                    <i class="ri-movie-line text-5xl text-blue-500"></i>
+                    <h2 class="text-blue-400 text-2xl font-bold">
 
-                    <h3 class="text-white mt-6 text-xl">
+                        50K+
 
-                        After Effects
+                    </h2>
 
-                    </h3>
+                    <p class="text-gray-400">
 
-                </div>
+                        Views Generated
 
-
-                <div class="card p-10 rounded-3xl text-center">
-
-                    <i class="ri-camera-line text-5xl text-blue-500"></i>
-
-                    <h3 class="text-white mt-6 text-xl">
-
-                        DaVinci Resolve
-
-                    </h3>
-
-                </div>
-
-
-
-                <div class="card p-10 rounded-3xl text-center">
-
-                    <i class="ri-image-edit-line text-5xl text-blue-500"></i>
-
-                    <h3 class="text-white mt-6 text-xl">
-
-                        Photoshop
-
-                    </h3>
+                    </p>
 
                 </div>
 
@@ -315,9 +301,9 @@
 
         </div>
 
-    </section>
+    </div>
 
-
+</section>
 
     <!-- PROJECTS -->
 
@@ -331,14 +317,20 @@
 
             </h1>
 
-
             <div class="grid lg:grid-cols-3 gap-8">
-
-
 
                 <div class="card rounded-3xl">
 
-                    <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1000">
+                    <!-- <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1000"> -->
+
+                   
+
+                        <iframe class="w-full h-[250px] rounded-t-3xl" src="https://www.youtube.com/embed/7F9wcnQI3j0"
+                            title="YouTube Video Player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+
 
                     <div class="p-6">
 
@@ -357,7 +349,6 @@
                     </div>
 
                 </div>
-
 
 
                 <div class="card rounded-3xl">
@@ -383,6 +374,77 @@
                 </div>
 
 
+                <div class="card rounded-3xl">
+
+                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1000">
+
+                    <div class="p-6">
+
+                        <h2 class="text-white text-2xl font-bold">
+
+                            Instagram Reels
+
+                        </h2>
+
+                        <p class="text-gray-400 mt-4">
+
+                            Fast paced social editing.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="grid lg:grid-cols-3 mt-8 gap-8">
+
+                <div class="card rounded-3xl">
+
+                    <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1000">
+
+                    <div class="p-6">
+
+                        <h2 class="text-white text-2xl font-bold">
+
+                            YouTube Editing
+
+                        </h2>
+
+                        <p class="text-gray-400 mt-4">
+
+                            High retention engaging videos.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card rounded-3xl">
+
+                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=1000">
+
+                    <div class="p-6">
+
+                        <h2 class="text-white text-2xl font-bold">
+
+                            Commercial Ads
+
+                        </h2>
+
+                        <p class="text-gray-400 mt-4">
+
+                            Motion graphics & cinematic edits.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
 
                 <div class="card rounded-3xl">
 
@@ -398,7 +460,7 @@
 
                         <p class="text-gray-400 mt-4">
 
-                            Fast paced social content editing.
+                            Fast paced social editing.
 
                         </p>
 
@@ -412,6 +474,53 @@
 
     </section>
 
+    <!-- SKILLS -->
+
+    <section id="skills" class="py-28 px-6">
+
+        <div class="max-w-7xl mx-auto">
+
+            <h1 class="text-white text-5xl font-bold text-center mb-20">
+
+                Tools I Use
+
+            </h1>
+
+            <div class="grid md:grid-cols-4 gap-8">
+
+                <div class="card p-10 rounded-3xl text-center">
+                    <i class="ri-film-line text-5xl text-blue-500"></i>
+                    <h3 class="text-white mt-6 text-xl">
+                        Premiere Pro
+                    </h3>
+                </div>
+
+                <div class="card p-10 rounded-3xl text-center">
+                    <i class="ri-movie-line text-5xl text-blue-500"></i>
+                    <h3 class="text-white mt-6 text-xl">
+                        After Effects
+                    </h3>
+                </div>
+
+                <div class="card p-10 rounded-3xl text-center">
+                    <i class="ri-camera-line text-5xl text-blue-500"></i>
+                    <h3 class="text-white mt-6 text-xl">
+                        DaVinci Resolve
+                    </h3>
+                </div>
+
+                <div class="card p-10 rounded-3xl text-center">
+                    <i class="ri-image-edit-line text-5xl text-blue-500"></i>
+                    <h3 class="text-white mt-6 text-xl">
+                        Fire Fly
+                    </h3>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
 
     <!-- CONTACT -->
@@ -421,18 +530,15 @@
         <div class="card max-w-4xl mx-auto rounded-[40px] p-16 text-center">
 
             <h1 class="text-white text-5xl font-bold">
-
                 Let's Work Together
-
             </h1>
 
             <p class="text-gray-400 mt-8">
-
                 Ready for your next project?
-
             </p>
 
-            <button class="bg-blue-600 px-10 py-4 rounded-full text-white mt-10 hover:scale-110 duration-300">
+            <button id="openModal"
+                class="bg-blue-600 px-10 py-4 rounded-full text-white mt-10 hover:scale-110 duration-300">
 
                 Contact Me
 
@@ -443,6 +549,106 @@
     </section>
 
 
+    <!-- MODAL -->
+
+    <div id="contactModal" class="fixed inset-0 bg-black/70 hidden justify-center items-center z-[999] px-6">
+
+        <div class="card max-w-xl w-full rounded-[30px] p-10 relative">
+
+            <button id="closeModal" class="absolute right-6 top-6 text-white text-3xl">
+
+                ×
+
+            </button>
+
+            <h1 class="text-white text-4xl font-bold mb-8">
+
+                Contact Information
+
+            </h1>
+
+            <div class="space-y-6">
+
+                <div class="flex items-center gap-4">
+
+                    <i class="ri-user-line text-blue-500 text-2xl"></i>
+
+                    <div>
+
+                        <p class="text-gray-400">
+                            Name
+                        </p>
+
+                        <p class="text-white">
+                            Suraj Singh
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="flex items-center gap-4">
+
+                    <i class="ri-mail-line text-blue-500 text-2xl"></i>
+
+                    <div>
+
+                        <p class="text-gray-400">
+                            Email
+                        </p>
+
+                        <p class="text-white">
+                            shinesuraj0993@gmail.com
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="flex items-center gap-4">
+
+                    <i class="ri-phone-line text-blue-500 text-2xl"></i>
+
+                    <div>
+
+                        <p class="text-gray-400">
+                            Phone
+                        </p>
+
+                        <p class="text-white">
+                            +91 9304185885
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="flex items-center gap-4">
+
+                    <i class="ri-map-pin-line text-blue-500 text-2xl"></i>
+
+                    <div>
+
+                        <p class="text-gray-400">
+                            Location
+                        </p>
+
+                        <p class="text-white">
+                            Ranchi, Jharkhand
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
     <script>
 
@@ -461,48 +667,31 @@
         })
 
 
-        /* Hero Animation */
-
         gsap.from(".smallText", {
-
             opacity: 0,
             y: 30,
             duration: 1
-
         })
 
-
         gsap.from(".heroText", {
-
             opacity: 0,
             y: 50,
             duration: 1,
             delay: .3
-
         })
 
-
         gsap.from(".subText", {
-
             opacity: 0,
             y: 50,
             duration: 1,
             delay: .6
-
         })
 
-
         gsap.from(".heroImage", {
-
             opacity: 0,
             scale: .8,
             duration: 1.5
-
         })
-
-
-
-        /* Scroll Animation */
 
         gsap.utils.toArray(".card").forEach((card) => {
 
@@ -513,16 +702,45 @@
                 duration: 1,
 
                 scrollTrigger: {
-
                     trigger: card,
                     start: "top 85%"
-
                 }
 
             })
 
         })
 
+        /* Contact Modal */
+
+        const openBtn = document.getElementById("openModal");
+        const closeBtn = document.getElementById("closeModal");
+        const modal = document.getElementById("contactModal");
+
+        openBtn.addEventListener("click", () => {
+
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+
+        });
+
+        closeBtn.addEventListener("click", () => {
+
+            modal.classList.remove("flex");
+            modal.classList.add("hidden");
+
+        });
+
+
+        window.addEventListener("click", (e) => {
+
+            if (e.target === modal) {
+
+                modal.classList.remove("flex");
+                modal.classList.add("hidden");
+
+            }
+
+        });
 
     </script>
 
