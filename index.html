@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Video Editor Portfolio</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet" />
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #050816;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+
+        /* Background Glow */
+
+        .blur1 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: #4f46e5;
+            filter: blur(150px);
+            opacity: .25;
+            border-radius: 50%;
+            top: -100px;
+            left: -100px;
+        }
+
+        .blur2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: #00bfff;
+            filter: blur(150px);
+            opacity: .25;
+            border-radius: 50%;
+            bottom: -100px;
+            right: -100px;
+        }
+
+
+        /* Navbar */
+
+        .navBlur {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .06);
+        }
+
+
+        /* Glass Cards */
+
+        .card {
+
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .07);
+            backdrop-filter: blur(20px);
+
+            transition: .5s;
+            overflow: hidden;
+
+        }
+
+        .card:hover {
+
+            transform: translateY(-10px);
+
+            border-color: #4f46e5;
+
+            box-shadow: 0 0 30px rgba(79, 70, 229, .4);
+
+        }
+
+
+        img {
+
+            width: 100%;
+            display: block;
+
+        }
+
+
+        /* Mouse */
+
+        .cursor {
+
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            position: fixed;
+            background: white;
+            mix-blend-mode: difference;
+            pointer-events: none;
+            z-index: 9999;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div class="cursor"></div>
+
+    <div class="blur1"></div>
+    <div class="blur2"></div>
+
+
+    <!-- NAVBAR -->
+
+    <nav class="fixed w-full z-50 p-6">
+
+        <div class="navBlur max-w-7xl mx-auto rounded-full px-8 py-4 flex justify-between items-center">
+
+            <h1 class="text-white text-2xl font-bold">
+
+                Sandhya.
+
+            </h1>
+
+            <div class="hidden md:flex gap-10 text-gray-300">
+
+                <a href="#home">Home</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section id="home" class="min-h-screen flex items-center px-6">
+
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+
+
+            <div>
+
+                <p class="smallText text-blue-400 mb-5 tracking-[5px]">
+
+                    VIDEO EDITOR
+
+                </p>
+
+                <h1 class="heroText text-white text-5xl lg:text-7xl font-bold leading-tight">
+
+                    Creating
+                    Amazing
+
+                    <span class="text-blue-500">
+
+                        Visual Stories
+
+                    </span>
+
+                </h1>
+
+
+                <p class="subText text-gray-400 text-lg mt-8">
+
+                    Professional editing for YouTube, Reels,
+                    Commercial Ads and Social Media Content.
+
+                </p>
+
+
+                <div class="mt-10 flex gap-5">
+
+                    <button class="bg-blue-600 text-white px-8 py-4 rounded-full hover:scale-110 duration-300">
+
+                        Hire Me
+
+                    </button>
+
+
+                    <button
+                        class="border border-gray-700 px-8 py-4 rounded-full text-white hover:bg-white hover:text-black duration-300">
+
+                        View Work
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="heroImage">
+
+                <div class="relative">
+
+                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44?w=1000"
+                        class="rounded-[30px]">
+
+
+                    <div class="absolute bottom-[-20px] right-[-20px] card rounded-3xl p-5">
+
+                        <h2 class="text-white text-3xl font-bold">
+
+                            150+
+
+                        </h2>
+
+                        <p class="text-gray-400">
+
+                            Projects Completed
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- SKILLS -->
+
+    <section id="skills" class="py-28 px-6">
+
+        <div class="max-w-7xl mx-auto">
+
+            <h1 class="title text-white text-5xl font-bold text-center mb-20">
+
+                Tools I Use
+
+            </h1>
+
+
+            <div class="grid md:grid-cols-4 gap-8">
+
+
+                <div class="card p-10 rounded-3xl text-center">
+
+                    <i class="ri-film-line text-5xl text-blue-500"></i>
+
+                    <h3 class="text-white mt-6 text-xl">
+
+                        Premiere Pro
+
+                    </h3>
+
+                </div>
+
+
+
+                <div class="card p-10 rounded-3xl text-center">
+
+                    <i class="ri-movie-line text-5xl text-blue-500"></i>
+
+                    <h3 class="text-white mt-6 text-xl">
+
+                        After Effects
+
+                    </h3>
+
+                </div>
+
+
+                <div class="card p-10 rounded-3xl text-center">
+
+                    <i class="ri-camera-line text-5xl text-blue-500"></i>
+
+                    <h3 class="text-white mt-6 text-xl">
+
+                        DaVinci Resolve
+
+                    </h3>
+
+                </div>
+
+
+
+                <div class="card p-10 rounded-3xl text-center">
+
+                    <i class="ri-image-edit-line text-5xl text-blue-500"></i>
+
+                    <h3 class="text-white mt-6 text-xl">
+
+                        Photoshop
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- PROJECTS -->
+
+    <section id="projects" class="py-28 px-6">
+
+        <div class="max-w-7xl mx-auto">
+
+            <h1 class="text-white text-5xl font-bold text-center mb-20">
+
+                Featured Projects
+
+            </h1>
+
+
+            <div class="grid lg:grid-cols-3 gap-8">
+
+
+
+                <div class="card rounded-3xl">
+
+                    <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1000">
+
+                    <div class="p-6">
+
+                        <h2 class="text-white text-2xl font-bold">
+
+                            YouTube Editing
+
+                        </h2>
+
+                        <p class="text-gray-400 mt-4">
+
+                            High retention engaging videos.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card rounded-3xl">
+
+                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=1000">
+
+                    <div class="p-6">
+
+                        <h2 class="text-white text-2xl font-bold">
+
+                            Commercial Ads
+
+                        </h2>
+
+                        <p class="text-gray-400 mt-4">
+
+                            Motion graphics & cinematic edits.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card rounded-3xl">
+
+                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1000">
+
+                    <div class="p-6">
+
+                        <h2 class="text-white text-2xl font-bold">
+
+                            Instagram Reels
+
+                        </h2>
+
+                        <p class="text-gray-400 mt-4">
+
+                            Fast paced social content editing.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="py-32 px-6">
+
+        <div class="card max-w-4xl mx-auto rounded-[40px] p-16 text-center">
+
+            <h1 class="text-white text-5xl font-bold">
+
+                Let's Work Together
+
+            </h1>
+
+            <p class="text-gray-400 mt-8">
+
+                Ready for your next project?
+
+            </p>
+
+            <button class="bg-blue-600 px-10 py-4 rounded-full text-white mt-10 hover:scale-110 duration-300">
+
+                Contact Me
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <script>
+
+        gsap.registerPlugin(ScrollTrigger);
+
+
+        /* Mouse */
+
+        let cursor = document.querySelector(".cursor");
+
+        document.addEventListener("mousemove", (e) => {
+
+            cursor.style.left = e.clientX + "px";
+            cursor.style.top = e.clientY + "px";
+
+        })
+
+
+        /* Hero Animation */
+
+        gsap.from(".smallText", {
+
+            opacity: 0,
+            y: 30,
+            duration: 1
+
+        })
+
+
+        gsap.from(".heroText", {
+
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            delay: .3
+
+        })
+
+
+        gsap.from(".subText", {
+
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            delay: .6
+
+        })
+
+
+        gsap.from(".heroImage", {
+
+            opacity: 0,
+            scale: .8,
+            duration: 1.5
+
+        })
+
+
+
+        /* Scroll Animation */
+
+        gsap.utils.toArray(".card").forEach((card) => {
+
+            gsap.from(card, {
+
+                opacity: 0,
+                y: 100,
+                duration: 1,
+
+                scrollTrigger: {
+
+                    trigger: card,
+                    start: "top 85%"
+
+                }
+
+            })
+
+        })
+
+
+    </script>
+
+</body>
+
+</html>
