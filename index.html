@@ -200,7 +200,7 @@
             color: white;
             font-size: 26px;
             opacity: 1;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.2s ease, background 0.2s ease;
             box-shadow: 0 0 30px rgba(99, 102, 241, 0.6);
             pointer-events: none;
             z-index: 10;
@@ -213,9 +213,9 @@
 
         /* Hide play button completely when video is playing */
         .video-container.is-playing .video-play-btn {
+            display: none !important;
             opacity: 0 !important;
-            transform: translate(-50%, -50%) scale(0.6) !important;
-            pointer-events: none !important;
+            visibility: hidden !important;
         }
 
         /* Hide browser native center play button overlay */
@@ -1161,33 +1161,48 @@
         }
 
         // Video Container Play/Pause Logic
-        document.querySelectorAll('.video-container').forEach(container => {
-            const video = container.querySelector('video');
-            if (!video) return;
+        document.addEventListener('DOMContentLoaded', () => {
+            const containers = document.querySelectorAll('.video-container');
+            
+            containers.forEach(container => {
+                const video = container.querySelector('video');
+                const playBtn = container.querySelector('.video-play-btn');
+                if (!video) return;
 
-            container.addEventListener('click', () => {
-                if (video.paused) {
-                    document.querySelectorAll('.video-container video').forEach(v => {
-                        if (v !== video) {
-                            v.pause();
-                        }
-                    });
-                    video.play();
-                } else {
-                    video.pause();
-                }
-            });
+                // Explicitly pause on load so NO video autoplays
+                video.pause();
 
-            video.addEventListener('play', () => {
-                container.classList.add('is-playing');
-            });
+                const updateState = () => {
+                    if (video.paused) {
+                        container.classList.remove('is-playing');
+                        if (playBtn) playBtn.style.display = 'flex';
+                    } else {
+                        container.classList.add('is-playing');
+                        if (playBtn) playBtn.style.display = 'none';
+                    }
+                };
 
-            video.addEventListener('pause', () => {
-                container.classList.remove('is-playing');
-            });
+                container.addEventListener('click', () => {
+                    if (video.paused) {
+                        // Pause all other videos so only ONE video plays at a time
+                        document.querySelectorAll('.video-container video').forEach(v => {
+                            if (v !== video) {
+                                v.pause();
+                            }
+                        });
+                        video.play().then(() => updateState()).catch(() => {});
+                    } else {
+                        video.pause();
+                        updateState();
+                    }
+                });
 
-            video.addEventListener('ended', () => {
-                container.classList.remove('is-playing');
+                video.addEventListener('play', updateState);
+                video.addEventListener('pause', updateState);
+                video.addEventListener('ended', updateState);
+
+                // Initial state update
+                updateState();
             });
         });
     </script>
