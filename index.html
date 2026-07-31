@@ -446,7 +446,7 @@
                 <!-- Project Card 1 -->
                 <div class="project-card glass-panel rounded-3xl overflow-hidden group flex flex-col" data-category="youtube">
                     <div class="video-container aspect-video">
-                        <video preload="metadata" muted loop playsinline class="w-full h-full object-cover">
+                        <video preload="metadata" controls muted loop playsinline class="w-full h-full object-cover">
                             <source src="./img/scripting_performing.mp4" type="video/mp4">
                             Your browser does not support video playback.
                         </video>
@@ -477,7 +477,7 @@
                 <!-- Project Card 2 -->
                 <div class="project-card glass-panel rounded-3xl overflow-hidden group flex flex-col" data-category="motion">
                     <div class="video-container aspect-video">
-                        <video preload="metadata" muted loop playsinline class="w-full h-full object-cover">
+                        <video preload="metadata" controls muted loop playsinline class="w-full h-full object-cover">
                             <source src="./img/motion_graphics_sound_design.mp4" type="video/mp4">
                             Your browser does not support video playback.
                         </video>
@@ -508,7 +508,7 @@
                 <!-- Project Card 3 -->
                 <div class="project-card glass-panel rounded-3xl overflow-hidden group flex flex-col" data-category="motion">
                     <div class="video-container aspect-video">
-                        <video preload="metadata" muted loop playsinline class="w-full h-full object-cover">
+                        <video preload="metadata" controls muted loop playsinline class="w-full h-full object-cover">
                             <source src="./img/music_motion_graphics.mp4" type="video/mp4">
                             Your browser does not support video playback.
                         </video>
@@ -539,7 +539,7 @@
                 <!-- Project Card 4 -->
                 <div class="project-card glass-panel rounded-3xl overflow-hidden group flex flex-col" data-category="motion">
                     <div class="video-container aspect-video">
-                        <video preload="metadata" muted loop playsinline class="w-full h-full object-cover">
+                        <video preload="metadata" controls muted loop playsinline class="w-full h-full object-cover">
                             <source src="./img/new_shapes_micro_design.mp4" type="video/mp4">
                             Your browser does not support video playback.
                         </video>
@@ -570,7 +570,7 @@
                 <!-- Project Card 5 -->
                 <div class="project-card glass-panel rounded-3xl overflow-hidden group flex flex-col" data-category="reels">
                     <div class="video-container aspect-video">
-                        <video preload="metadata" muted loop playsinline class="w-full h-full object-cover">
+                        <video preload="metadata" controls muted loop playsinline class="w-full h-full object-cover">
                             <source src="./img/vertical_ads.mp4" type="video/mp4">
                             Your browser does not support video playback.
                         </video>
@@ -601,7 +601,7 @@
                 <!-- Project Card 6 -->
                 <div class="project-card glass-panel rounded-3xl overflow-hidden group flex flex-col" data-category="reels">
                     <div class="video-container aspect-video">
-                        <video preload="metadata" muted loop playsinline class="w-full h-full object-cover">
+                        <video preload="metadata" controls muted loop playsinline class="w-full h-full object-cover">
                             <source src="./img/viral_clip_selection.mp4" type="video/mp4">
                             Your browser does not support video playback.
                         </video>
@@ -1160,7 +1160,7 @@
             }
         }
 
-        // Video Container Play/Pause Logic
+        // Video Container Play/Pause & Native Controls Logic
         document.addEventListener('DOMContentLoaded', () => {
             const containers = document.querySelectorAll('.video-container');
             
@@ -1182,22 +1182,29 @@
                     }
                 };
 
-                container.addEventListener('click', () => {
-                    if (video.paused) {
-                        // Pause all other videos so only ONE video plays at a time
-                        document.querySelectorAll('.video-container video').forEach(v => {
-                            if (v !== video) {
-                                v.pause();
-                            }
-                        });
-                        video.play().then(() => updateState()).catch(() => {});
-                    } else {
-                        video.pause();
-                        updateState();
-                    }
+                if (playBtn) {
+                    playBtn.style.pointerEvents = 'auto';
+                    playBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        if (video.paused) {
+                            document.querySelectorAll('.video-container video').forEach(v => {
+                                if (v !== video) v.pause();
+                            });
+                            video.play().then(() => updateState()).catch(() => {});
+                        } else {
+                            video.pause();
+                            updateState();
+                        }
+                    });
+                }
+
+                video.addEventListener('play', () => {
+                    document.querySelectorAll('.video-container video').forEach(v => {
+                        if (v !== video) v.pause();
+                    });
+                    updateState();
                 });
 
-                video.addEventListener('play', updateState);
                 video.addEventListener('pause', updateState);
                 video.addEventListener('ended', updateState);
 
